@@ -14,9 +14,10 @@ module.exports = {
     browsers: '> 1%, last 2 versions'
   },
   module: {
-    loaders: [
-    { test: /\.vue$/, loader: 'vue' },
-    {
+    loaders: [{ 
+      test: /\.vue$/, 
+      loader: 'vue' 
+    },{
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader'

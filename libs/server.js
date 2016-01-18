@@ -1,6 +1,6 @@
 'use strict';
 
-require('babel-core/register')
+require('babel-register')
 
 // Global dependencies
 import path from 'path'
