@@ -24,7 +24,7 @@ Lean.Cloud.useMasterKey() // 如果不希望使用 masterKey 权限，可以删�
 const app = express()
 
 // Middlewares
-app.use(Lean.Cloud)
+app.use(require('./cloud'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())

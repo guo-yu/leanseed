@@ -1,7 +1,5 @@
 'use strict';
 
-require('babel-core/register')
-
 import Lean from 'leanengine'
 
 Lean.Cloud.define('hello', function(request, response){
