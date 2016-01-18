@@ -2,9 +2,10 @@
   "name": "leanengine-seed",
   "version": "0.1.0",
   "description": "a leanCloud seed project based on Express and Vue.js",
-  "main": "libs/server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node libs/server.js",
+    "start": "node app.js",
+    "start-server": "node_modules/.bin/babel-node libs/server.js",
     "build": "node_modules/.bin/webpack -p",
     "build-server": "node_modules/.bin/babel libs -d dist",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot"
@@ -17,6 +18,7 @@
   "author": "turing <o.u.turing@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-register": "^6.4.3",
     "body-parser": "^1.13.2",
     "cookie-parser": "^1.3.5",
     "express": "4.13.1",

@@ -1,7 +1,5 @@
 'use strict';
 
-require('babel-register')
-
 // Global dependencies
 import path from 'path'
 import domain from 'domain'

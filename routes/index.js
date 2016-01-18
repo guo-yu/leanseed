@@ -4,6 +4,6 @@ import express from 'express'
 
 const Router = express.Router()
 
-Router.get('/ok', (req, res) => res.send(1))
+Router.get('/ok', (req, res) => res.end('ok'))
 
 export default Router
