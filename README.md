@@ -1,4 +1,4 @@
-## LeanSeed 
+## LeanSeed ![npm](https://badge.fury.io/js/leanseed.png)
 
 LeanSeed (灵犀) 是以 Express 4.x 和 Vue.js 为基础的全栈开发框架，灵犀支持 LeanEngine，可将项目一键部署到 LeanCloud，达到 Serverless 开发方式。
 
