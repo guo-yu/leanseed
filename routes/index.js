@@ -1,17 +1,12 @@
 'use strict';
 
 import domain from 'domain'
+import routesAPI from './api'
 import { whiteOrigins } from '../libs/consts'
-import API from './api'
 
-export default {
-  API,
-  uncaughtException,
-  CORS,
-  notFound,
-}
+export const API = routesAPI
 
-function uncaughtException(req, res, next) {
+export function uncaughtException(req, res, next) {
   let d = domain.create()
 
   d.add(req)
@@ -29,7 +24,7 @@ function uncaughtException(req, res, next) {
   d.run(next)
 }
 
-function CORS(req, res, next) {
+export function CORS(req, res, next) {
   const origin = req.headers.origin
 
   if (whiteOrigins.indexOf(origin) !== -1) {
@@ -39,10 +34,10 @@ function CORS(req, res, next) {
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS, DELETE')
   }
 
-  return next()
+  next()
 }
 
-function notFound(req, res, next) {
+export function notFound(req, res, next) {
   res.status(404)
   res.end('404 Not found')
 }

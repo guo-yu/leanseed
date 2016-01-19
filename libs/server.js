@@ -28,7 +28,6 @@ const app = express()
 
 // Middlewares and Routes
 app.use(express.static('dist'))
-app.use(require('./cloud'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())

@@ -1,10 +1,9 @@
-var AV = require('leanengine');
+'use strict';
 
-/**
- * 一个简单的云代码方法
- */
-AV.Cloud.define('hello', function(request, response) {
-  response.success('Hello world!');
-});
+import { Cloud } from 'leanengine'
 
-module.exports = AV.Cloud;
+Cloud.define('hello', function(request, response){
+  response.success('Hello world')
+})
+
+export default Cloud
