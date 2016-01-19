@@ -6,10 +6,10 @@ LeanSeed (灵犀) 是以 Express 4.x 和 Vue.js 为基础的全栈开发框架�
 
 ### 在线演示
 灵犀的演示项目站点为：
-[http://stg-leanseed.leanapp.cn](stg-leanseed.leanapp.cn)
+[http://stg-leanseed.leanapp.cn](stg-leanseed.leanapp.cn)  
 
 可访问此 API 测试在线演示是否稳定：
-[http://stg-leanseed.leanapp.cn/api/ping](http://stg-leanseed.leanapp.cn/api/ping)
+[http://stg-leanseed.leanapp.cn/api/ping](http://stg-leanseed.leanapp.cn/api/ping)  
 
 ### 初始化项目
 灵犀的初始化非常简单，按照如下步骤进行：
@@ -32,8 +32,9 @@ $ cnpm install .
 $ avoscloud add <appName> <appId>
 ```
 其中，appName 填写为在 LeanCloud 项目中设置的二级域名。
+
 ### 文件结构
-灵犀中的文件结构很简单，以此代表以下含义：
+灵犀中的文件结构很简单，依次代表以下含义：
 - `app.js` API 服务入口文件，采用了 require hook 的方式动态编译源码
 - `routes` 路由文件夹，包括后端路由（`routes/api.js`）和前端路由（`routes/vue.js`）
 - `libs` 库文件夹
@@ -64,6 +65,7 @@ $ npm run dev
 前端开发工作流请访问 `http://localhost:8080`
 
 **三、熟悉自动化工作流**
+
 在先前提到的 `webpack.config.js` 中，我们定义了所有前端工作流，这些工作流的快捷方式，可以在 `package.json` 中的 scripts 字段找到。
 
 总的来说，执行：
