@@ -6,7 +6,7 @@ LeanSeed (灵犀) 是以 Express 4.x 和 Vue.js 为基础的全栈开发框架�
 
 ### 在线演示
 灵犀的演示项目站点为：
-[http://stg-leanseed.leanapp.cn](stg-leanseed.leanapp.cn)  
+[http://stg-leanseed.leanapp.cn](http://stg-leanseed.leanapp.cn)  
 
 可访问此 API 测试在线演示是否稳定：
 [http://stg-leanseed.leanapp.cn/api/ping](http://stg-leanseed.leanapp.cn/api/ping)  
