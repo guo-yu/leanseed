@@ -1,4 +1,4 @@
-## LeanEngine Seed
+## LeanSeed
 
 a seed project for LeanEngine.
 
