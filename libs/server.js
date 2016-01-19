@@ -28,6 +28,7 @@ const app = express()
 
 // Middlewares and Routes
 app.use(express.static('dist'))
+app.use(require('./cloud').default) // to fit babel 6.x
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
