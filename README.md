@@ -2,6 +2,9 @@
 
 LeanSeed (灵犀) 是以 Express 4.x 和 Vue.js 为基础的全栈开发框架，灵犀支持 LeanEngine，可将项目一键部署到 LeanCloud，达到 Serverless 开发方式。
 
+### 在线演示
+可访问此 API 测试在线服务是否稳定：[http://stg-leanseed.leanapp.cn/api/ping](http://stg-leanseed.leanapp.cn/api/ping)
+
 ### 初始化项目
 灵犀的初始化非常简单，按照如下步骤进行：
 
@@ -57,7 +60,8 @@ $ avoscloud publish
 生产环境清访问：`http://[appName].leanapp.cn`
 
 ### 其他
-更多关于 LeanEngine 的操作，可以查阅 avoscloud-code@npm 和 leanengine@npm 相关模块文档
+- babel 相关模块依赖放在 `dependencies` 中是为了在 leanEngine deploy 时完全安装。
+- 更多关于 LeanEngine 的操作，可以查阅 avoscloud-code@npm 和 leanengine@npm 相关模块文档。
 
 ### MIT license
 Copyright (c) 2016 turing &lt;o.u.turing@gmail.com&gt;
