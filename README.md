@@ -5,8 +5,11 @@ LeanSeed (灵犀) 是以 Express 4.x 和 Vue.js 为基础的全栈开发框架�
 在灵犀中，我们使用了前后端完全分离的架构，因此，开发者可以不用在乎前端项目和后端逻辑的开发进度，并行开发。前后端代码均使用了 ES2015（ES6）编写，完全支持 `import`、`=>`、解构等全新 JavaScript 语法，统一了前后端模块的模块定义和加载方式，使用 JS 全栈编写项目更加便捷，简单，易于理解。此外，灵犀采用 Babel 6.x 编译项目源码，无需担心服务器生产环境中 Node 版本是否支持全新 JavaScript 标准。
 
 ### 在线演示
-灵犀的演示项目站点为：[http://stg-leanseed.leanapp.cn](stg-leanseed.leanapp.cn)
-可访问此 API 测试在线演示是否稳定：[http://stg-leanseed.leanapp.cn/api/ping](http://stg-leanseed.leanapp.cn/api/ping)
+灵犀的演示项目站点为：
+[http://stg-leanseed.leanapp.cn](stg-leanseed.leanapp.cn)
+
+可访问此 API 测试在线演示是否稳定：
+[http://stg-leanseed.leanapp.cn/api/ping](http://stg-leanseed.leanapp.cn/api/ping)
 
 ### 初始化项目
 灵犀的初始化非常简单，按照如下步骤进行：
@@ -46,21 +49,21 @@ $ avoscloud add <appName> <appId>
 ### 本地开发
 灵犀的前后端分别由 Express 和 Vue 搭建，后端服务是一个 API 服务，前后端完全分离，因此开发模式也是不同的：
 
-1. 启用本地开发服务器（API 服务）：
+**一、启用本地开发服务器（API 服务）：**
 
 ```bash
 $ avoscloud
 ```
 API 服务请访问：`http://localhost:3000`
 
-2. 启用基于 Webpack 动态热替换的前端开发工作流：
+**二、启用基于 Webpack 动态热替换的前端开发工作流：**
 
 ```bash
 $ npm run dev
 ```
 前端开发工作流请访问 `http://localhost:8080`
 
-3. 熟悉自动化工作流
+**三、熟悉自动化工作流**
 在先前提到的 `webpack.config.js` 中，我们定义了所有前端工作流，这些工作流的快捷方式，可以在 `package.json` 中的 scripts 字段找到。
 
 总的来说，执行：
