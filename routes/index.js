@@ -3,6 +3,9 @@
 import domain from 'domain'
 import routesAPI from './api'
 import consts from '../libs/consts'
+import { Debug } from '../libs/utils'
+
+const debug = Debug('routes:index')
 
 export const API = routesAPI
 
@@ -37,7 +40,24 @@ export function CORS(req, res, next) {
   next()
 }
 
+export function errorHandler(err, req, res, next) {
+  const code = err.message || 500
+  const message = consts.errorsMap[code]
+
+  debug(code, message)
+
+  res.status(code)
+
+  if (!req.xhr)
+    return res.end(message)
+
+  return res.json({ 
+    code: 99,
+    message,
+  })
+}
+
 export function notFound(req, res, next) {
   res.status(404)
-  res.end('404 Not found')
+  res.end(consts.errorsMap[404])
 }

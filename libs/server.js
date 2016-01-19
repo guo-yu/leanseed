@@ -12,7 +12,8 @@ import {
   API,
   uncaughtException,
   CORS,
-  notFound 
+  errorHandler,
+  notFound,
 } from '../routes'
 
 // Consts
@@ -34,7 +35,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(uncaughtException)
 app.all('/api/*', CORS)
-app.use('/api', API) // Init APIs
+
+// APIs setup
+app.use('/api', API)
+
+// Error handlers
+app.use(errorHandler)
 app.use(notFound)
 
 // 端口一定要从环境变量 `LC_APP_PORT` 中获取。
