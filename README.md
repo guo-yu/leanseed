@@ -11,12 +11,12 @@ LeanSeed (灵犀) 是以 Express 4.x 和 Vue.js 为基础的全栈开发框架�
 Clone 项目到本地
 
 ```bash
-$ git clone git@github.com:guo-yu/leanengine-seed.git
+$ git clone git@github.com:guo-yu/leanseed.git
 ```
 安装相关依赖：
 
 ```bash
-$ cd leanengine-seed
+$ cd leanseed
 $ cnpm install .
 ```
 
