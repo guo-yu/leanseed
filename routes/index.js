@@ -2,7 +2,7 @@
 
 import domain from 'domain'
 import routesAPI from './api'
-import { whiteOrigins } from '../libs/consts'
+import consts from '../libs/consts'
 
 export const API = routesAPI
 
@@ -27,7 +27,7 @@ export function uncaughtException(req, res, next) {
 export function CORS(req, res, next) {
   const origin = req.headers.origin
 
-  if (whiteOrigins.indexOf(origin) !== -1) {
+  if (consts.whiteOrigins.indexOf(origin) !== -1) {
     res.header('Access-Control-Allow-Origin', origin)
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
     res.header('Access-Control-Allow-Credentials', true)
