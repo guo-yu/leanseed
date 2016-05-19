@@ -3,3 +3,4 @@ node_modules
 .avoscloud/
 dist/*.js
 dist/*.css
+build
