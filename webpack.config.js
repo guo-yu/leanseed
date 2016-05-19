@@ -1,18 +1,15 @@
 var path = require('path')
 var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var plugins = [ new ExtractTextPlugin('app.min.css') ]
-
-if (process.env.NODE_ENV === 'production')
-  plugins.push(new webpack.optimize.UglifyJsPlugin())
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
 module.exports = {
   entry: './libs/app.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app.min.js'
+    filename: 'app.[hash].min.js'
   },
-  plugins: plugins,
   postcss: function(webpack) {
     return [
       require('postcss-import')({ addDependencyTo: webpack }),
@@ -40,6 +37,32 @@ module.exports = {
     { test: /\.jpg$/, loader: "file-loader" },
     { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=5000' }]
   },
+  plugins: [
+    new WebpackCleanupPlugin(), // config `{ exclude: ['file.js', 'file.css'] }` for exclude files
+    new ExtractTextPlugin('app.[hash].min.css'),
+    new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebpackPlugin({
+      minify: {
+        collapseWhitespace: true
+      },
+      templateContent: `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <title>A LeanCloud Seed Project</title>
+        </head>
+        <body>
+          <div id="app">
+            <router-view>
+            </router-view>
+          </div>
+        </body>
+        </html>
+      `
+    })
+  ],
   devServer: {
     hot: true,
     contentBase: './dist'
