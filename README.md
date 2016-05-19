@@ -6,10 +6,10 @@ LeanSeed (灵犀) 是以 Express 4.x 和 Vue.js 为基础的全栈开发框架�
 
 ### 在线演示
 灵犀的演示项目站点为：
-[http://stg-leanseed.leanapp.cn](http://stg-leanseed.leanapp.cn)
+[http://leanseed.leanapp.cn/](http://leanseed.leanapp.cn/)
 
 可访问此 API 测试在线演示是否稳定：
-[http://stg-leanseed.leanapp.cn/api/ping](http://stg-leanseed.leanapp.cn/api/ping)
+[http://leanseed.leanapp.cn/api/ping](http://leanseed.leanapp.cn/api/ping)
 
 ### 初始化项目
 灵犀的初始化非常简单，按照如下步骤进行：
@@ -27,25 +27,26 @@ $ cnpm install .
 $ npm install -g avoscloud-code
 ```
 
-使用 [avoscloud cli](https://www.npmjs.com/package/avoscloud-code) 工具在本地注册此项目：
+使用 [LeanEngine cli](https://www.npmjs.com/package/avoscloud-code) 工具在本地注册此项目：
 
 ```bash
-$ avoscloud add <appName> <appId>
+$ lean add <appName> <appId>
 ```
 其中，appName 填写为在 LeanCloud 项目中设置的二级域名。
 
 ### 文件结构
 灵犀中的文件结构很简单，依次代表以下含义：
-- `app.js` API 服务入口文件，采用了 require hook 的方式动态编译源码
-- `routes` 路由文件夹，包括后端路由（`routes/api.js`）和前端路由（`routes/vue.js`）
-- `libs` 库文件夹
+- `app.js` API 服务入口文件，在开发模式下采用了 require hook 的方式动态编译源码
+- `server` 后端服务文件夹，在生产环境使用 npm run build 编译到 ./build 文件夹中
+  - `index.js` 后端服务入口文件
+  - `routes.js` 与 `api.js` 后端路由文件
+- `libs` 前端库文件夹
 	* `app.js` 前端项目主文件
-	* `server.js` 后端 API 服务主文件
-	* `cloud.js` LeanCloud 云代码文件
-	* `consts.js` 常量配置文件
+	* `routes.js` 前端路由文件
 - `components` 前端组件文件夹，包括所有 Vue 组件
 - `css` 样式文件夹，目前支持以 cssnext 形式编写
-- `dist` 编译后的最终文件，此文件夹的文件默认会托管在 API 服务的根域，包括一个 `index.html` 入口文件
+- `dist` 前端编译后的最终文件，此文件夹的文件默认会托管在 API 服务的根域，包括一个 `index.html` 入口文件
+- `build` 服务编译后的最终文件，将成为生产环境入口执行文件
 - `webpack.config.js` webpack 配置文件
 
 ### 目前用以构建此项目的依赖模块版本
@@ -61,7 +62,7 @@ $ avoscloud add <appName> <appId>
 **一、启用本地开发服务器（API 服务）：**
 
 ```bash
-$ avoscloud
+$ npm run debug
 ```
 API 服务请访问：`http://localhost:3000`
 
@@ -78,24 +79,26 @@ $ npm run dev
 
 总的来说，执行：
 - `npm start` 会启动 API 服务
-- `npm run build` 会编译前端代码，包括所有静态资源文件，到 `./dist` 文件夹
-- `npm run dev` 会启动前端开发工作流
+- `npm run build` 会编译前端和后端代码，包括所有静态资源文件，到 `./dist` 文件夹
+- `npm run debug` 会启动前端开发工作流
+- `npm run deploy` 会使用 leanEngine CLI 将项目发布到测试环境
 
 ### 部署到测试环境
-可利用 [avoscloud cli](https://www.npmjs.com/package/avoscloud-code) 一键部署到测试环境：
+可利用 [LeanEngine cli](https://www.npmjs.com/package/avoscloud-code) 一键部署到测试环境：
 
 ```bash
-$ lean deploy
+$ npm run deploy
 ```
 部署到测试环境由于需要自动化安装依赖模块，可能需要近五分钟左右，请耐心等待至返回成功部署的结果以及 hashTag。
 
 测试环境清访问：`http://stg-[appName].leanapp.cn`
+免费项目的测试环境暂时不可用，可直接访问: `http://[appName].leanapp.cn`
 
 ### 发布到生产环境
-可利用 [avoscloud cli](https://www.npmjs.com/package/avoscloud-code) 一键发布到生产环境：
+可利用 [LeanEngine cli](https://www.npmjs.com/package/avoscloud-code) 一键发布到生产环境：
 
 ```bash
-$ lean publish
+$ npm run pub
 ```
 
 生产环境清访问：`http://[appName].leanapp.cn`
