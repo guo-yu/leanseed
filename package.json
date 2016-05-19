@@ -7,7 +7,10 @@
     "start": "node build/index.js",
     "debug": "DEBUG=leanseed,leanseed:* node app.js",
     "build-server": "node_modules/.bin/babel server -d build",
-    "build": "NODE_ENV=production node_modules/.bin/webpack -p",
+    "build-app": "NODE_ENV=production node_modules/.bin/webpack -p",
+    "predeploy": "npm run build-server & npm run build-app",
+    "deploy": "lean deploy",
+    "pub": "lean publish",
     "dev": "node_modules/.bin/webpack-dev-server --inline --hot --port 8080",
     "init-hotel": "node_modules/.bin/webpack-dev-server --inline --hot --port $PORT --host 0.0.0.0",
     "hotel": "hotel add 'npm run init-hotel' -n 'leanseed'"
