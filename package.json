@@ -1,6 +1,6 @@
 {
   "name": "leanseed",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "a leanCloud seed project based on Express and Vue.js",
   "main": "app.js",
   "scripts": {
