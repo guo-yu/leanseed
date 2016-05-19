@@ -14,7 +14,7 @@ import {
   CORS,
   errorHandler,
   notFound,
-} from '../routes'
+} from './routes'
 
 // LeanEngine Setup
 Lean.init({

@@ -1,2 +1,2 @@
 require('babel-register')
-require('./libs/server')
+require('./server')

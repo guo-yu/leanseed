@@ -2,8 +2,8 @@
 
 import domain from 'domain'
 import routesAPI from './api'
-import consts from '../libs/consts'
-import { Debug } from '../libs/utils'
+import consts from './consts'
+import { Debug } from './utils'
 
 const debug = Debug('routes:index')
 

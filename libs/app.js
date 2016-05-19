@@ -5,7 +5,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Local dependencies
-import routes from '../routes/vue'
+import routes from './routes'
 
 // App Styles
 import '../css/app.css'
