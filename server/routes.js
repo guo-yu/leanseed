@@ -2,15 +2,15 @@
 
 import domain from 'domain'
 import routesAPI from './api'
-import consts from '../libs/consts'
-import { Debug } from '../libs/utils'
+import consts from './consts'
+import { Debug } from './utils'
 
 const debug = Debug('routes:index')
 
 export const API = routesAPI
 
 export function uncaughtException(req, res, next) {
-  let d = domain.create()
+  let d = process.domain || domain.create()
 
   d.add(req)
   d.add(res)
@@ -51,7 +51,7 @@ export function errorHandler(err, req, res, next) {
   if (!req.xhr)
     return res.end(message)
 
-  return res.json({ 
+  return res.json({
     code: 99,
     message,
   })
