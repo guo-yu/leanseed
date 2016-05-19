@@ -1,7 +1,4 @@
 node_modules
 *.log
 .avoscloud/
-dist/*.js
-dist/*.css
 build
-dist
