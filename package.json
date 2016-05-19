@@ -4,10 +4,12 @@
   "description": "a leanCloud seed project based on Express and Vue.js",
   "main": "app.js",
   "scripts": {
-    "debug": "DEBUG=leanseed,leanseed:* node app.js",
     "start": "node app.js",
-    "build": "node_modules/.bin/webpack -p",
-    "dev": "node_modules/.bin/webpack-dev-server --inline --hot"
+    "debug": "DEBUG=leanseed,leanseed:* node app.js",
+    "build": "NODE_ENV=production node_modules/.bin/webpack -p",
+    "dev": "node_modules/.bin/webpack-dev-server --inline --hot --port 8080",
+    "init-hotel": "node_modules/.bin/webpack-dev-server --inline --hot --port $PORT --host 0.0.0.0",
+    "hotel": "hotel add 'npm run init-hotel' -n 'leanseed'"
   },
   "babel": {
     "presets": [
