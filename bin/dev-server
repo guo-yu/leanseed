@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+var exeq = require('exeq')
+var leanConfigs = {
+  LEANCLOUD_APP_ID: 'testAppId',
+  LEANCLOUD_APP_KEY: 'testAppkey'
+}
+
+try {
+  var configs = require('../.avoscloud/apps.json')
+  leanConfigs = fetchAppInfo(configs)
+} catch (err) {
+}
+
+runDevServer(leanConfigs)
+
+function fetchAppInfo(obj) {
+  var appId = Object.keys(obj)[0]
+
+  if (!appId)
+    return {}
+
+  return {
+    LEANCLOUD_APP_ID: appId,
+    LEANCLOUD_APP_KEY: obj[appId]
+  }
+}
+
+function joinAppInfoToEnv(appInfo) {
+  return Object.keys(appInfo).map(function(key){
+    return key + '=' + appInfo[key]
+  }).join(' ')
+}
+
+function runDevServer(c) {
+  exeq('LEANCLOUD_APP_PORT=8081 DEBUG=leanseed,leanseed:* ' + joinAppInfoToEnv(c) + ' node app.js') // Run a compile on the fly server on 8081
+
+  try {
+    var dist = require('../build')
+    exeq('DEBUG=leanseed,leanseed:* lean up') // run a API-dev server on port 3000(Production) and 3001
+  } catch (err) {
+  }
+}

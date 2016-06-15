@@ -2,10 +2,12 @@
 
 // Global dependencies
 import path from 'path'
+import timeout from 'connect-timeout'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import Lean from 'leanengine'
+import cloud from './cloud'
 
 // Local dependencies
 import {
@@ -22,14 +24,16 @@ Lean.init({
   appKey: process.env.LEANCLOUD_APP_KEY,
   masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
 })
-Lean.Cloud.useMasterKey() // 如果不希望使用 masterKey 权限，可以删除
+
+// 如果不希望使用 masterKey 权限，可以删除
+Lean.Cloud.useMasterKey()
 
 // Init Express App
 const app = express()
 
 // Middlewares and Routes
 app.use(express.static('dist'))
-app.use(require('./cloud').default) // to fit babel 6.x
+app.use(timeout('15s'))
 app.use(Lean.express())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -48,5 +52,13 @@ app.use(notFound)
 // LeanEngine 运行时会分配端口并赋值到该变量。
 const PORT = parseInt(process.env.LEANCLOUD_APP_PORT || 3000)
 
-app.listen(PORT, () =>
-  console.log('LeanSeed app is running on port: ', PORT))
+app.listen(PORT, () => {
+  console.log('LeanSeed app is running on port: ', PORT)
+
+  // 注册全局未捕获异常处理器
+  process.on('uncaughtException', err =>
+    console.error("Caught exception:", err.stack))
+
+  process.on('unhandledRejection', (reason, p) =>
+    console.error("Unhandled Rejection at: Promise ", p, " reason: ", reason.stack))
+})
